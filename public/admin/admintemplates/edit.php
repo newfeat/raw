@@ -16,7 +16,7 @@
     </div>
     <div class="block1">
         <div class="container1">
-            <form action="/admin/actions/edit.php" method="post">
+            <form action="/admin/save.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $article->id; ?>">
                 <input type="text" name="title" placeholder="заголовок" value="<?php echo $article->title; ?>">
                 <br>

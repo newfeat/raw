@@ -24,7 +24,7 @@
                             <p><?php echo $article->title; ?></p>
                             <p><?php echo $article->lead; ?></p>
                             <a class="link" href="/admin/edit.php?id=<?php echo $article->id; ?>">Редактировать</a>
-                            <a class="link" href="/admin/actions/del.php?id=<?php echo $article->id; ?>">Удалить</a>
+                            <a class="link" href="/admin/del.php?id=<?php echo $article->id; ?>">Удалить</a>
                         </li>
                     </ul>
                 </div>

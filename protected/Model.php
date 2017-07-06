@@ -31,38 +31,39 @@ abstract class Model
         $data = get_object_vars($this);
         $cols = [];
         $binds = [];
-        $vals = [];
+        $params = [];
         foreach ($data as $key => $val){
             if ('id' == $key) {
                 continue;
             }
             $cols[] = $key;
             $binds[] = ':' . $key;
-            $vals[':' . $key] = $val;
+            $params[':' . $key] = $val;
         }
         $sql = 'INSERT INTO ' . static::$table. ' (' . implode(', ', $cols) . ') VALUES (' . implode(', ', $binds) . ')';
 
         $db = Db::instance();
 
-        $db->execute($sql, $vals);
+        $db->execute($sql, $params);
 
         $this->id = $db->lastInsertId();
+
 
     }
 
     public function update()
     {
         $cols = [];
-        $vals = [];
+        $params = [];
         foreach ($this as $key => $val) {
             if ('id' !== $key) {
                 $cols[] = $key . '=:' . $key;
             }
-            $vals[':' . $key] = $val;
+            $params[':' . $key] = $val;
         }
         $db = Db::instance();
         $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $cols) . ' WHERE id=:id';
-        return $db->execute($sql, $vals);
+        return $db->execute($sql, $params);
     }
 
 

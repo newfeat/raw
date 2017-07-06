@@ -19,6 +19,7 @@ class Db
 
     public function query($sql, $class, $params = [])
     {
+
         $sth = $this->dbh->prepare($sql);
         $res = $sth->execute($params);
 
@@ -31,13 +32,11 @@ class Db
 
     public function execute($sql,$params = [])
     {
-        $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute($params);
 
-        if (false !== $res) {
-            return true;
-        }
-        return false;
+        $sth = $this->dbh->prepare($sql);
+
+        $res = $sth->execute($params);
+        return $res;
     }
 
 
