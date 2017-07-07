@@ -9,7 +9,7 @@ if(!empty($_POST['id'])){
 }
 $article->title = $_POST['title'];
 $article->lead = $_POST['lead'];
-$article->desc = $_POST['desc'];
+$article->description = $_POST['description'];
 $article->save();
 
 header('Location: /admin/index.php');

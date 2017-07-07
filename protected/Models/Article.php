@@ -12,7 +12,7 @@ class Article
 
     public $title;
     public $lead;
-    public $desc;
+    public $description;
 
     public static function findLatest($number)
     {

@@ -34,7 +34,7 @@
     <br>
     <div class="block1">
         <div class="container1">
-            <a class="link" href="/admin/edit.php ?>">Добавить еще одну новость</a>
+            <a class="link" href="/admin/edit.php">Добавить еще одну новость</a>
         </div>
     </div>
 </article>

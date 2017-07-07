@@ -26,7 +26,7 @@
                     <td>
                         <p><?php echo $article->lead; ?></p>
                         <hr>
-                        <p><?php echo $article->desc; ?></p>
+                        <p><?php echo $article->description; ?></p>
                     </td>
                 </tr>
             </table>

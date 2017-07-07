@@ -24,7 +24,7 @@
                 <input type="text" name="lead" placeholder="подзаголовок" value="<?php echo $article->lead; ?>">
                 <br>
                 <br>
-                <input type="text" name="desc" placeholder="текст" value="<?php echo $article->desc; ?>">
+                <input type="text" name="description" placeholder="текст" value="<?php echo $article->description; ?>">
                 <br>
                 <br>
                 <input type="submit" value="Сохранить">
