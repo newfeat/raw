@@ -17,15 +17,19 @@
     <div class="block1">
         <div class="container1">
             <?php
-            foreach ($news as $article) { ?>
-                <div>
-                    <ul style="font-size: 13px; line-height: 1.7;">
-                        <li>
-                            <a class="link" href="/article.php?id=<?php echo $article->id; ?>"><?php echo $article->title; ?><br><?php echo $article->lead; ?></a>
-                        </li>
-                    </ul>
-                </div>
-            <?php } ?>
+            foreach ($this->news as $article): ?>
+                <section>
+                    <h2>
+                        <a class="link"
+                           href="/News/One/?id=<?php echo $article->id; ?>"><?php echo $article->title; ?><br></a>
+                    </h2>
+                    <article>Описание: <?php echo $article->lead; ?></article>
+                    <?php if (!empty($article->author_id)): ?>
+                        <p>Автор: <?php echo $article->author->name; ?></p>
+                    <?php endif ?>
+                    <hr>
+                </section>
+            <?php endforeach; ?>
         </div>
     </div>
 </article>

@@ -42,7 +42,7 @@ p {
     color: dimgrey;
 }
 
-input {
+input, select {
     width: 50%;
 }
 

@@ -17,24 +17,24 @@
     <div class="block1">
         <div class="container1">
             <?php
-            foreach ($news as $article) { ?>
+            foreach ($this->news as $article): ?>
                 <div>
                     <ul style="font-size: 13px; line-height: 1.7;">
                         <li>
                             <p><?php echo $article->title; ?></p>
                             <p><?php echo $article->lead; ?></p>
-                            <a class="link" href="/admin/edit.php?id=<?php echo $article->id; ?>">Редактировать</a>
-                            <a class="link" href="/admin/del.php?id=<?php echo $article->id; ?>">Удалить</a>
+                            <a class="link" href="/Admin/Edit/?id=<?php echo $article->id; ?>">Редактировать</a>
+                            <a class="link" href="/Admin/Delete/?id=<?php echo $article->id; ?>">Удалить</a>
                         </li>
                     </ul>
                 </div>
-            <?php } ?>
+            <?php endforeach; ?>
         </div>
     </div>
     <br>
     <div class="block1">
         <div class="container1">
-            <a class="link" href="/admin/edit.php">Добавить еще одну новость</a>
+            <a class="link" href="/Admin/Edit">Добавить еще одну новость</a>
         </div>
     </div>
 </article>

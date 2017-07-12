@@ -19,14 +19,17 @@
             <table>
                 <tr>
                     <td>
-                        <h3><?php echo $article->title; ?></h3>
+                        <h3><?php echo $this->article->title; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p><?php echo $article->lead; ?></p>
-                        <hr>
-                        <p><?php echo $article->description; ?></p>
+                        <p><?php echo $this->article->lead; ?></p>
+                        <p><?php echo $this->article->description; ?></p>
+                        <?php if (!empty($this->article->author_id)): ?>
+                            <hr>
+                            <p>Автор: <?php echo $this->article->author->name; ?></p>
+                        <?php endif ?>
                     </td>
                 </tr>
             </table>

@@ -7,6 +7,7 @@ if (empty($_GET['id'])) {
 }
 
 $id = $_GET['id'];
-$article = \App\Models\Article::findById($id);
 
-include __DIR__ . '/../templates/article.php';
+$view = new \App\View();
+$view->article = \App\Models\Article::findById($id);
+$view->display(__DIR__ . '/../templates/article.php');
