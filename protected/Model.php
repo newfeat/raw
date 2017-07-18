@@ -4,10 +4,9 @@ namespace App;
 
 abstract class Model
 {
+    use MagicTrait;
 
     protected static $table = null;
-
-    public $id;
 
     public function __set($key, $val)
     {
@@ -73,7 +72,8 @@ abstract class Model
         }
         $db = Db::instance();
         $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $cols) . ' WHERE id=:id';
-        return $db->execute($sql, $params);
+        $db->execute($sql, $params);
+        var_dump($params); die;
     }
 
 
