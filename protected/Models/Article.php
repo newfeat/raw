@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Db;
 use App\Model;
-use App\MultiException;
 
 class Article
     extends Model
@@ -37,16 +36,10 @@ class Article
 
     protected function validate_title($val)
     {
-        $err = new MultiException();
         if(strlen($val)<5){
-            $err->add(new \Exception('Слишком коротокое наименование статьи'));
-        }
-        if(false !== strpos($val, '!')){
-            $err->add(new \Exception('Недопустимый символ в наименовании статьи'));
-        }
-        if(!$err->empty()){
-            throw $err;
+            throw new \Exception('Слишком коротокое наименование статьи');
         }
     }
+
 
 }
