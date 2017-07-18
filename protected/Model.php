@@ -4,9 +4,19 @@ namespace App;
 
 abstract class Model
 {
+
     protected static $table = null;
 
     public $id;
+
+    public function __set($key, $val)
+    {
+        $method = 'validate_' . $key;
+        if (method_exists($this, $method)) {
+            $this->$method($val);
+        }
+        $this->data[$key] = $val;
+    }
 
     public static function findAll()
     {
