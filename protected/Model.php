@@ -8,6 +8,7 @@ abstract class Model
 
     protected static $table = null;
 
+
     public function __set($key, $val)
     {
         $method = 'validate_' . $key;
@@ -37,7 +38,7 @@ abstract class Model
 
     public function insert()
     {
-        $data = get_object_vars($this);
+        $data = $this->data;
         $cols = [];
         $binds = [];
         $params = [];
@@ -64,7 +65,8 @@ abstract class Model
     {
         $cols = [];
         $params = [];
-        foreach ($this as $key => $val) {
+        foreach ($this->data as $key => $val) {
+
             if ('id' !== $key) {
                 $cols[] = $key . '=:' . $key;
             }
@@ -72,8 +74,7 @@ abstract class Model
         }
         $db = Db::instance();
         $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $cols) . ' WHERE id=:id';
-        $db->execute($sql, $params);
-        var_dump($params); die;
+        return $db->execute($sql, $params);
     }
 
 
