@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Exceptions\DbException;
+
 class Db
 {
     use Singleton;
@@ -14,7 +16,16 @@ class Db
         $dsn = 'mysql:host=' . $config->data['db']['host'] . ';dbname=' . $config->data['db']['dbname'];
         $user = $config->data['db']['user'];
         $password = $config->data['db']['password'];
-        $this->dbh = new \PDO($dsn, $user, $password);
+
+
+        try {
+            $this->dbh = new \PDO($dsn, $user, $password);
+        } catch (\PDOException $e){
+            if (!empty($e)){
+                $error = new DbException();
+                throw $error;
+            }
+        }
     }
 
     public function query($sql, $class, $params = [])

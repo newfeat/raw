@@ -3,20 +3,10 @@
 require __DIR__ . '/../../autoload.php';
 
 
-$article = \App\Models\Article::findById(1);
+try{
+    $article = new \App\Models\Article();
+    $article->fill(['title' => '!', 'price' => -39]);
 
-$article->title = 'Новость';
-$article->lead = 'Новость';
-$article->desc = 'Новость';
-$article->update();
-var_dump($article->update());
-
-
-
-$article = new \App\Models\Article();
-$article->id = '';
-$article->title = 'Новость';
-$article->lead = 'Новость';
-$article->desc = 'Новость';
-$article->insert();
-var_dump($article->insert());
+} catch (\App\MultiException $e){
+    var_dump($e);
+}

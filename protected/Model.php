@@ -89,4 +89,21 @@ abstract class Model
         return $db->execute($sql, $arg);
     }
 
+    public function fill(array $data)
+    {
+        $errors = new MultiException();
+
+        foreach ($data as $key => $val) {
+            try {
+                $this->$key = $val;
+            } catch (\Throwable $e) {
+                $errors->add($e);
+            }
+        }
+        if (!$errors->empty()) {
+            throw $errors;
+        }
+        return $this;
+    }
+
 }

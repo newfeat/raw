@@ -36,17 +36,13 @@ class Admin
         } else {
             $article = new \App\Models\Article();
         }
-        $article->title = $_POST['title'];
-        $article->lead = $_POST['lead'];
-        $article->description = $_POST['description'];
-        if (!empty($_POST['author_id'])) {
-            $article->author_id = ($_POST['author_id']);
-        } else {
-            $article->author_id = null;
+        try {
+            $article->fill($_POST);
+            $article->save();
+            header('Location: /Admin');
+        } catch (\App\MultiException $errors) {
+            var_dump($errors);
         }
-        $article->save();
-
-        header('Location: /Admin');
     }
 
 
