@@ -12,6 +12,11 @@
     <div class="block1">
         <div class="container1">
             <h1>Создание или редактирование новости</h1>
+            <?php foreach($errors->all() as $error):?>
+
+            <p><?php echo $error->getMessage(); ?></p>
+
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="block1">

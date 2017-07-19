@@ -40,6 +40,11 @@ class Article
             throw new \Exception('Слишком коротокое наименование статьи');
         }
     }
-
+    protected function validate_lead($val)
+    {
+        if(strlen($val)<5){
+            throw new \Exception('Слишком коротокий лид');
+        }
+    }
 
 }

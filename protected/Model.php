@@ -38,11 +38,10 @@ abstract class Model
 
     public function insert()
     {
-        $data = $this->data;
         $cols = [];
         $binds = [];
         $params = [];
-        foreach ($data as $key => $val){
+        foreach ($this->data as $key => $val){
             if ('id' == $key) {
                 continue;
             }

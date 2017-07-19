@@ -41,7 +41,7 @@ class Admin
             $article->save();
             header('Location: /Admin');
         } catch (\App\MultiException $errors) {
-            var_dump($errors);
+            include __DIR__ . '/../../templates/admin/edit.php';
         }
     }
 
