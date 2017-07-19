@@ -12,11 +12,11 @@
     <div class="block1">
         <div class="container1">
             <h1>Создание или редактирование новости</h1>
-            <?php foreach($errors->all() as $error):?>
-
-            <p><?php echo $error->getMessage(); ?></p>
-
-            <?php endforeach; ?>
+            <?php if (isset($this->errors)): ?>
+                <?php foreach ($this->errors as $error): ?>
+                    <p><?php echo $error->getMessage(); ?></p>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
     <div class="block1">
@@ -29,14 +29,16 @@
                 <input type="text" name="lead" placeholder="подзаголовок" value="<?php echo $this->article->lead; ?>">
                 <br>
                 <br>
-                <input type="text" name="description" placeholder="текст" value="<?php echo $this->article->description; ?>">
+                <input type="text" name="description" placeholder="текст"
+                       value="<?php echo $this->article->description; ?>">
                 <br>
                 <br>
                 <select name="author_id">
                     <option value=""></option>
                     <?php foreach ($this->authors as $author): ?>
 
-                        <option value="<?php echo $author->id; ?>" <?php if (!empty($this->article->author_id) && $author->id == $this->article->author_id){?> selected <?php } ?>>
+                        <option
+                            value="<?php echo $author->id; ?>" <?php if (!empty($this->article->author_id) && $author->id == $this->article->author_id) { ?> selected <?php } ?>>
                             <?php echo $author->name; ?>
                         </option>
 

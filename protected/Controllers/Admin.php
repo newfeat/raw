@@ -41,7 +41,10 @@ class Admin
             $article->save();
             header('Location: /Admin');
         } catch (\App\MultiException $errors) {
-            include __DIR__ . '/../../templates/admin/edit.php';
+            $this->view->errors = $errors->all();
+            $this->view->article = \App\Models\Article::findById($_POST['id']);
+            $this->view->authors = \App\Models\Author::findAll();
+            $this->view->display(__DIR__ . '/../../templates/admin/edit.php');
         }
     }
 
