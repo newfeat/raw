@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Авторизация</title>
+    <title>Регистрация</title>
     <link rel="stylesheet" type="text/css" href="/../css/style.css">
 </head>
 <body>
@@ -11,22 +11,22 @@
 <article class="container">
     <div class="block1">
         <div class="container1">
-            <h1>Авторизация пользователя</h1>
-            <p><a href="shop.php">В магазин</a></p>
+            <h1>Регистрация пользователя</h1>
         </div>
     </div>
     <div class="block1">
         <div class="container1">
-            <?php
-            require_once __DIR__ . '/functions.php';
-
-
-            ?>
-            <form action="/auth.php" method="post">
-                <input type="email" name="email" placeholder="email" value="<?php echo getCurrentUser(); ?>">
+            <form action="/Admin/Save" method="post">
+                <input type="text" name="name" placeholder="имя">
+                <br>
+                <br>
+                <input type="email" name="email" placeholder="email">
                 <br>
                 <br>
                 <input type="password" name="password" placeholder="пароль">
+                <br>
+                <br>
+                <input type="password" name="confirm" placeholder="подтверждение">
                 <br>
                 <br>
                 <input type="submit" value="Зарегистрироваться">
