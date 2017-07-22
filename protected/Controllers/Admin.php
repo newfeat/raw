@@ -4,12 +4,17 @@ namespace App\Controllers;
 
 
 use App\Controller;
+use App\Models\User;
 
 class Admin
     extends Controller
 {
     protected function access($action)
     {
+        $currentuser = User::getCurrentUser();
+        if (!isset($currentuser)) {
+            return false;
+        }
         return true;
     }
 
